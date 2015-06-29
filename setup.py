@@ -34,11 +34,10 @@ if not has_admin():
 	print("on Mac or Linux, this means run with sudo")
 	raise PermissionError("User does not have root/admin privileges")
 
-if platform.system == "Linux":
+if platform.system() == "Linux":
+elif platform.system() == "Windows":
 	pass
-elif platform.system == "Windows":
-	pass
-elif platform.system == "Darwin":
+elif platform.system() == "Darwin":
 	pass
 else:
 	raise RuntimeError("System not supported by script")
