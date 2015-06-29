@@ -27,3 +27,10 @@ def apt_install_package(package_name):
 
 print("=======<FTC Java Autoconfigurator>=======")
 print("= written by @archimedespi of Team 6806 =")
+if not has_admin():
+	print("User does not have admin privileges!")
+	print("Please run as an admin.")
+	print("on Windows, this right click cmd.exe and select \"run as admin\"")
+	print("on Mac or Linux, this means run with sudo")
+	raise PermissionError("User does not have root/admin privileges")
+
