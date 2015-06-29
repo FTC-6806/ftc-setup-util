@@ -25,3 +25,5 @@ def apt_install_package(package_name):
 	proc.wait();
 	print("done.")
 
+print("=======<FTC Java Autoconfigurator>=======")
+print("= written by @archimedespi of Team 6806 =")
