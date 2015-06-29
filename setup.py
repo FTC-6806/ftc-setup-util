@@ -18,3 +18,10 @@ def has_admin():
     	if os.geteuid() == 0:
     		return True
 
+def apt_install_package(package_name):
+	print("> apt-get install {pack}...".format(pack=package_name))
+	proc = subprocess.Popen('apt-get install -y {pack}'.format(pack=package_name), shell=True, stdin=None,
+			stdout=subprocess.STDOUT, stderr=subprocess.STDOUT)
+	proc.wait();
+	print("done.")
+
