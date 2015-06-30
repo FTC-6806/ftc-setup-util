@@ -43,7 +43,16 @@ if not has_admin():
 	raise PermissionError("User does not have root/admin privileges")
 
 if platform.system() == "Linux":
-	if platform.dist()[0] == "Ubuntu"
+	if platform.dist()[0] == "Ubuntu":
+		apt_install_package("python-software-properties software-properties-common")
+		add_apt_repository("ppa:webupd8team/java")
+		apt_update()
+		run_command("echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections")
+		run_command("echo oracle-java8-installer shared/accepted-oracle-license-v1-1 seen true | /usr/bin/debconf-set-selections")
+		apt_install_package("oracle-java8-installer")
+		apt_install_package("oracle-java8-set-default")
+
+
 elif platform.system() == "Windows":
 	pass
 elif platform.system() == "Darwin":
