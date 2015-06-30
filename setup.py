@@ -18,12 +18,20 @@ def has_admin():
     	if os.geteuid() == 0:
     		return True
 
+def run_command(cmd):
+	subprocess.check_call(cmd, shell=True, stdin=None, stdout=open(os.devnull, 'wb'))
+
 def apt_install_package(package_name):
-	print("> apt-get install {pack}...".format(pack=package_name))
-	proc = subprocess.Popen('apt-get install -y {pack}'.format(pack=package_name), shell=True, stdin=None,
-			stdout=subprocess.STDOUT, stderr=subprocess.STDOUT)
-	proc.wait();
-	print("done.")
+	print("> apt-get install {pack}".format(pack=package_name))
+	run_command('apt-get install -y {pack}'.format(pack=package_name))
+
+def add_apt_repository(repo):
+	print("> add-apt-repository {repo}".format(repo=repo))
+	run_command('add-apt-repository -y {repo}'.format(repo=repo))
+
+def apt_update():
+	print("> apt-get update")
+	run_command("apt-get update")
 
 print("=======<FTC Java Autoconfigurator>=======")
 print("= written by @archimedespi of Team 6806 =")
@@ -35,6 +43,7 @@ if not has_admin():
 	raise PermissionError("User does not have root/admin privileges")
 
 if platform.system() == "Linux":
+	if platform.dist()[0] == "Ubuntu"
 elif platform.system() == "Windows":
 	pass
 elif platform.system() == "Darwin":
