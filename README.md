@@ -7,8 +7,9 @@ Java development. Stuff it installs:
 - Android Studio
 - Git
 
+It works on Ubuntu and Mac OS X.
+
 It *needs* to install packages from a package manager, so the only prerequisites are:
-- Windows: Chocolatey
 - Mac: Homebrew
 
 To run it, just do `./setup.py`. It'll ask you for an admin password where needed.
