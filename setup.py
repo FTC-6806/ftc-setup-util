@@ -33,6 +33,14 @@ def apt_update():
 	print("> apt-get update")
 	run_command("apt-get update")
 
+def brew_install(package_name):
+	print("> brew install {pack}".format(pack=package_name))
+	run_command('brew install {pack}'.format(pack=package_name))
+
+def brew_cask_install(cask_name):
+	print("> brew cask install {pack}".format(pack=cask_name))
+	run_command('brew cask install {pack}'.format(pack=cask_name))
+
 print("=======<FTC Java Autoconfigurator>=======")
 print("= written by @archimedespi of Team 6806 =")
 if not has_admin():
@@ -57,10 +65,12 @@ if platform.system() == "Linux":
 		apt_install_package("oracle-java8-installer")
 		apt_install_package("oracle-java8-set-default")
 
-
-elif platform.system() == "Windows":
-	pass
 elif platform.system() == "Darwin":
-	pass
+	brew_install("caskroom/cask/brew-cask")
+	brew_install("git")
+	brew_cask_install("java")
+	brew_cask_install("android-studio")
 else:
 	raise RuntimeError("System not supported by script")
+
+print("Done!")
