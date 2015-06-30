@@ -44,11 +44,16 @@ if not has_admin():
 
 if platform.system() == "Linux":
 	if platform.dist()[0] == "Ubuntu":
+		# make sure we have add-apt-repository
 		apt_install_package("python-software-properties software-properties-common")
+		# grab oracle java ppa
 		add_apt_repository("ppa:webupd8team/java")
+		# pull the new repo lists
 		apt_update()
+		# preaccept the Oracle license
 		run_command("echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections")
 		run_command("echo oracle-java8-installer shared/accepted-oracle-license-v1-1 seen true | /usr/bin/debconf-set-selections")
+		# install Java 8
 		apt_install_package("oracle-java8-installer")
 		apt_install_package("oracle-java8-set-default")
 
