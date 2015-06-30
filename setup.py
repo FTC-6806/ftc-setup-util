@@ -58,6 +58,8 @@ if platform.system() == "Linux":
 		add_apt_repository("ppa:webupd8team/java")
 		# pull the new repo lists
 		apt_update()
+		# install git
+		apt_install_package("git")
 		# preaccept the Oracle license
 		run_command("echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections")
 		run_command("echo oracle-java8-installer shared/accepted-oracle-license-v1-1 seen true | /usr/bin/debconf-set-selections")
